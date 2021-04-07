@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    reverseproxy:
+        build:
+          context: ./
+          dockerfile: Dockerfile-reverseproxy
+        depends_on:
+            - gles2
+        image: reverseproxy
+        ports:
+            - 80:80
+        container_name: old-oak-reverseproxy
+        restart: always
+ 
+    gles2:
+        build:
+            context: ./
+            dockerfile: Dockerfile-flask
+        image: flask-app
+        ports:
+            - 8080:5000
+        volumes:
+            - "${GLES2}/web:/var/www/"
+        environment:
+            - FLASK_APP=/var/www/app.py
+        command: flask run --host=0.0.0.0
+        container_name: old-oak-www-gles2
+        restart: always
