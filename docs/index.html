@@ -5,6 +5,7 @@
     <title>old-oak.net home</title>
     <link rel="oldoak icon" href="#">
 
+    /* Most of the loader code has been lifted from w3schools.com */
     <style>
     /* Center the loader */
     #loader {
@@ -56,14 +57,17 @@
       text-align: center;
     }
     </style>
-
   </head>
-  <body>
+
+  <body onload="loadingFunction()" style="margin:0;">
     <p align="center">
       <img src="images/oaktree.jpg" align="middle">
     </p>
 
-    <h1 align="center">Under Construction - GLES</h1>
+    <h1 align="center">WASM Example Using OpenGL (GLES)</h1>
+    <div id="loader"></div>
+
+    <div style="display:none;" id="canvasDiv" class="animate-bottom">
     <p align="center">
       <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
     </p>
@@ -83,6 +87,21 @@
       }
     </script>
     <script src="astro-pos.js"></script>
+    </div>
+
+    <script>
+      var loadingVar;
+
+      function loadingFunction() {
+        loadingVar = setTimeout(showPage, 1000);
+      }
+
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("canvasDiv").style.display = "block";
+      }
+    </script>
+
     
   </body>
 </html>
