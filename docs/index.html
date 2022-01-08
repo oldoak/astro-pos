@@ -23,6 +23,7 @@
       animation: spin 2s linear infinite;
     }
 
+    /* Safari */
     @-webkit-keyframes spin {
       0% { -webkit-transform: rotate(0deg); }
       100% { -webkit-transform: rotate(360deg); }
@@ -93,7 +94,7 @@
       var loadingVar;
 
       function loadingFunction() {
-        loadingVar = setTimeout(showPage, 3000);
+        loadingVar = setTimeout(showPage, 2500);
       }
 
       function showPage() {
